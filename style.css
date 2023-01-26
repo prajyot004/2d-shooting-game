@@ -1,0 +1,300 @@
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    background-color: black;
+}
+
+.container{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-image: url('assets/im2.jpg');
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  filter: blur(10px);
+}
+
+#canvas1{
+    border: 5px solid black;
+    position: absolute;
+    top: 50%;
+    left: 50%; 
+    width: 100%;
+    font-family: 'Bangers', cursive;
+    transform: translate(-50%,-50%);
+    background: #4d79bc;
+    /* max-width: 100%;
+    max-height: 100%; */
+}
+
+#layer1,#layer2,#layer3,#layer4,#player,#angler1,#angler2,#lucky,#projectile,#gears,#hivewhale,#drone,#smokeExplosion,#fireExplosion{
+    display: none;
+}
+
+.box
+{
+  position: relative;
+  width: 426px;
+  height: 626px;
+  background: black;
+  border-radius: 10px;
+  box-shadow: 0 0 60px rgb(0, 204, 255);
+  overflow: hidden;
+  
+}
+
+.box::before
+{
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 420px;
+  height: 620px;
+  background: linear-gradient(0deg,rgb(7, 255, 7),rgb(0, 255, 0));
+  transform-origin: bottom right;
+  animation: abc 6s linear infinite;
+  
+}
+
+.box::after
+{
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 420px;
+  height: 620px;
+  background: linear-gradient(0deg,#e100ff,#ff01ff);
+  transform-origin: bottom right;
+  animation: abc 6s linear infinite;
+  animation-delay: -3s;
+}
+
+.wrapper {
+    position: relative;
+    width: 420px;
+    height: 620px;
+    z-index: 10;
+    inset: 3px;
+    border-radius: 10px;
+    background: #000;
+    border-radius: 20px;
+    padding: 40px;
+    overflow: hidden;
+}
+
+
+@keyframes abc
+{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+  
+.wrapper:hover {
+    animation: animate 1s linear infinite;
+}
+
+.box:hover {
+  animation: animate 5s linear infinite;
+}
+  
+  @keyframes animate {
+    100% {
+      filter: hue-rotate(360deg);
+    }
+  }
+  
+  
+  .form-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    transition: 1s ease-in-out;
+  }
+  
+  .wrapper.active .form-wrapper.sign-in {
+    transform: translateY(-650px);
+  }
+  
+  .wrapper .form-wrapper.sign-up {
+    margin-top: 5px;
+    position: absolute;
+    left: 0;
+  }
+  
+  .wrapper.active .form-wrapper.sign-up {
+    transform: translateY(-590px);
+  }
+  
+  h2 {
+    font-family: 'Bangers', cursive;
+    background: linear-gradient(45deg,#ff0000,#ffff00,#ff00f3,#66ff00,#16bffd,#a80077);
+    background-size: 400%;
+    font-size:5.0em;
+    letter-spacing: 10px;
+    color:black;
+    padding: 2px;
+    -webkit-background-clip: text;
+    -webkit-text-stroke: 10px transparent;
+    text-align: center;
+    animation: anim 10s linear infinite;
+  }
+
+  @keyframes anim {
+    0%{
+      background-position: 0%;
+    }
+    100%{
+      background-position: 400%;
+    }
+  }
+
+  .he{
+    margin-top: -60px;
+  }
+
+  .he2{
+    margin-top: -15px;
+  }
+  
+  .input-group {
+    position: relative;
+    width: 300px;
+    margin-top: 35px;
+  }
+  
+  /* .input-group label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #0ef;
+    pointer-events: none;
+    transition: .5s;
+  }
+   */
+  .input-group input {
+    position: relative;
+    width: 100%;
+    font-size: 20px;
+    letter-spacing: 0.05em;
+    color: black;
+    text-decoration: solid;
+    padding: 20px 10px 10px;
+    background: transparent;
+    border: none;
+    outline: none;
+    z-index: 1;
+  }
+
+  .input-group label{
+    position: absolute;
+    left: 0;
+    padding: 20px 10px 10px;
+    font-size: 1em;
+    color: rgb(252, 252, 252);
+    pointer-events: none;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+  }
+
+  .input-group input:valid~ label,
+  .input-group input:focus~ label{
+    color: #0ef;
+    transform: translateY(-34px);
+    font-size: 0.75em;
+  }
+
+  .input-group i {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2%;
+    background: #0ef;
+    border-radius: 4px;
+    transition: 0.5s;
+    pointer-events: none;
+  }
+
+  .input-group input:valid~i,
+  .input-group input:focus~i{
+    height: 44px;
+  }
+  
+  /* .input-group input:focus~label,
+  .input-group input:valid~label {
+    top: -5px;
+  } */
+  
+  .remember {
+    margin: 20px 0 15px 5px;
+  }
+  
+  .remember label {
+    color: #fff;
+    font-size: 14px;
+  }
+  
+  .remember label input {
+    accent-color: #0ef;
+  }
+  
+  button {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    background: #0ef;
+    box-shadow: 0 0 10px #0ef;
+    font-size: 16px;
+    color: #000;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+  }
+  
+  .signUp-link {
+    font-size: 14px;
+    text-align: center;
+    margin: 15px 0;
+  }
+  
+  .signUp-link p {
+    color: #fff;
+  }
+  
+  .signUp-link p a {
+    color: #0ef;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .signUp-link p a:hover {
+    text-decoration: underline;
+  }
+

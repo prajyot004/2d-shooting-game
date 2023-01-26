@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game homepage</title>
+    <link rel="stylesheet" type="text/css" href="ghome.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="lg">
+        <div class="logoutctnr ">
+            <div class="lgoglass">
+                <div>Log Out</div>
+            </div>
+        </div>
+    </div>
+    <section class="container">
+        <div class="app-paper">
+            <div class="paper-title">
+                Select Game Mode
+            </div>
+            <form action="">
+                <!-- timer 30 -->
+                <input type="radio" name="gmode" id="1" class="hidebx" value="30" checked="checked">
+                <label for="1" class="lbl-radio">
+                    <div class="display-box">
+                        <div class="mode">Timer</div>
+                        <div class="time">30 seconds</div>
+                    </div>
+                </label>
+
+                <!-- timer 1 min -->
+                <input type="radio" name="gmode" id="2" class="hidebx" value="60">
+                <label for="2" class="lbl-radio">
+                    <div class="display-box">
+                        <div class="mode">Timer</div>
+                        <div class="time">1 minutes</div>
+                    </div>
+                </label>
+
+                <!-- endless -->
+                <input type="radio" name="gmode" id="3" class="hidebx" value="5">
+                <label for="3" class="lbl-radio">
+                    <div class="display-box">
+                        <div class="mode">Infinity</div>
+                        <div class="time">5 lives</div>
+                    </div>
+                </label>
+
+                <!-- endless 10 llvie-->
+                <input type="radio" name="gmode" id="4" class="hidebx" value="10">
+                <label for="4" class="lbl-radio">
+                    <div class="display-box">
+                        <div class="mode">Infinity</div>
+                        <div class="time">10 lives</div>
+                    </div>
+                </label>
+            </form>
+
+        </div>
+
+    </section>
+    <section class="container">
+        <div class="app-paper">
+            <div class="paper-title-diff">
+                Select Difficulty
+            </div>
+            <form action="">
+                <!-- timer 30 -->
+                <input type="radio" name="difficulty" id="5" class="hidebx" value="1" checked="checked">
+                <label for="5" class="lbl-radio-d">
+                    <div class="display-box-d">
+                        <div class="mode">Easy</div>
+                    </div>
+                </label>
+
+                <!-- timer 1 min -->
+                <input type="radio" name="difficulty" id="6" class="hidebx" value="2">
+                <label for="6" class="lbl-radio-d">
+                    <div class="display-box-d">
+                        <div class="mode">Medium</div>
+
+                    </div>
+                </label>
+
+                <!-- endless -->
+                <input type="radio" name="difficulty" id="7" class="hidebx" value="3">
+                <label for="7" class="lbl-radio-d">
+                    <div class="display-box-d">
+                        <div class="mode">Hard</div>
+                    </div>
+                </label>
+
+                <input type="radio" name="difficulty" id="8" class="hidebx" value="4">
+                <label for="8" class="lbl-radio-d">
+                    <div class="display-box-d">
+                        <div class="mode">unbeatable</div>
+                    </div>
+                </label>
+            </form>
+        </div>
+    </section>
+
+    <div class="playcontainer" id="play">
+        <div class="playbutton"> PLAY</div>
+    </div>
+
+    <script type="module">
+        function passval() {
+            var mode = document.querySelector('input[name="gmode"]:checked').value;
+            var diff = document.querySelector('input[name="difficulty"]:checked').value;
+            localStorage.setItem('gamemode', mode);
+            localStorage.setItem('difficulty', diff);
+            return false;
+        }
+        const play = document.getElementById("play");
+
+
+        play.addEventListener("click", function () {
+            passval();
+            window.location.href = "index.html";
+        })
+
+
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+  import { getAuth, onAuthStateChanged ,updateProfile} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
+  const firebaseConfig = {
+      apiKey: "AIzaSyDzBylnZRHjduKLfGVdbMr6MfQ4gkNYjI8",
+      authDomain: "game-3a9dd.firebaseapp.com",
+      projectId: "game-3a9dd",
+      storageBucket: "game-3a9dd.appspot.com",
+      messagingSenderId: "1088032915432",
+      appId: "1:1088032915432:web:93d3dae336145458b7ee5d",
+      measurementId: "G-DTST5PVV2N"
+    };
+  const app = initializeApp(firebaseConfig);
+const auth2 = getAuth();
+
+onAuthStateChanged(auth2, (user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/firebase.User
+    const uid = user.uid;
+    console.log(uid);
+    // ...
+  } else {
+    // User is signed out
+    // ...
+  }
+});
+
+
+  // Initialize Firebase
+//   const auth = getAuth();
+  
+    </script>
+
+</body>
+
+</html>
